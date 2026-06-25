@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chirurgie de la Main de l'Africain — Anatole Kibadi Kapay</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --noir:        #05080f;
+  --bleu-nuit:   #080f1e;
+  --bleu-profond:#0a1628;
+  --bleu-surface:#0e1f38;
+  --cyan:        #00d4c8;
+  --cyan-dim:    #008f8a;
+  --electrique:  #3b82f6;
+  --or:          #d4a017;
+  --or-clair:    #f0c040;
+  --blanc:       #ffffff;
+  --gris-300:    #d1d5db;
+  --gris-400:    #9ca3af;
+  --gris-500:    #6b7280;
+  --verre:       rgba(255,255,255,0.04);
+  --verre-bord:  rgba(255,255,255,0.08);
+  --verre-hover: rgba(0,212,200,0.2);
+  --rayon:       14px;
+  --transition:  0.28s cubic-bezier(0.4,0,0.2,1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--noir);
+  color: var(--blanc);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── BARRE DE NAVIGATION ── */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 60px;
+  background: rgba(5,8,15,0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--verre-bord);
+  display: flex; align-items: center;
+  padding: 0 40px; gap: 0;
+}
+
+.nav-brand {
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  font-weight: normal;
+  color: var(--gris-400);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.nav-brand span { color: var(--cyan); }
+
+.nav-spacer { flex: 1; }
+
+.nav-links {
+  display: flex; gap: 32px; list-style: none;
+}
+
+.nav-links a {
+  color: var(--gris-400);
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  transition: color var(--transition);
+}
+
+.nav-links a:hover { color: var(--cyan); }
+
+/* ── SECTION HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 100px 40px 60px;
+  text-align: center;
+  overflow: hidden;
+}
+
+#hero-canvas {
+  position: absolute; inset: 0; z-index: 0;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 820px;
+}
+
+.hero-eyebrow {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 24px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 40px; height: 1px;
+  background: var(--cyan-dim);
+}
+
+.hero-title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: normal;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--blanc);
+  margin-bottom: 8px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--or-clair);
+}
+
+.hero-subtitle {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gris-400);
+  margin-bottom: 32px;
+}
+
+.hero-intro {
+  font-size: 17px;
+  color: var(--gris-300);
+  line-height: 1.75;
+  max-width: 680px;
+  margin: 0 auto 40px;
+}
+
+.hero-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 24px;
+  background: var(--verre);
+  border: 1px solid var(--verre-bord);
+  border-radius: 100px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  color: var(--gris-400);
+}
+
+.hero-author strong { color: var(--or-clair); font-weight: 500; }
+
+.scroll-indicator {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gris-500);
+}
+
+.scroll-arrow {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--cyan));
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ── SECTIONS GÉNÉRALES ── */
+.section {
+  padding: 96px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-narrow {
+  max-width: 760px;
+}
+
+.section-eyebrow {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(22px, 3.5vw, 38px);
+  font-weight: normal;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--blanc);
+  margin-bottom: 24px;
+}
+
+.section-divider {
+  width: 48px; height: 2px;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+  margin-bottom: 28px;
+}
+
+.section-body {
+  font-size: 16px;
+  color: var(--gris-300);
+  line-height: 1.8;
+}
+
+.section-body + .section-body { margin-top: 16px; }
+
+/* ── HÉRITAGE ── */
+#heritage {
+  background: linear-gradient(180deg, var(--noir) 0%, var(--bleu-nuit) 50%, var(--noir) 100%);
+  border-top: 1px solid var(--verre-bord);
+  border-bottom: 1px solid var(--verre-bord);
+}
+
+.heritage-card {
+  background: var(--verre);
+  border: 1px solid rgba(212,160,23,0.25);
+  border-radius: var(--rayon);
+  padding: 40px 44px;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.heritage-quote {
+  border-left: 2px solid var(--or);
+  padding-left: 24px;
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--gris-300);
+  line-height: 1.7;
+  margin-top: 8px;
+}
+
+.heritage-meta {
+  display: flex; flex-direction: column; gap: 20px;
+}
+
+.heritage-name {
+  font-family: 'Georgia', serif;
+  font-size: 26px;
+  color: var(--or-clair);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.heritage-role {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gris-500);
+  margin-top: 4px;
+}
+
+.heritage-desc {
+  font-size: 15px;
+  color: var(--gris-400);
+  line-height: 1.7;
+}
+
+/* ── PROFESSEUR ── */
+.prof-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.prof-card {
+  background: var(--verre);
+  border: 1px solid var(--verre-bord);
+  border-radius: var(--rayon);
+  padding: 28px 30px;
+  transition: border-color var(--transition);
+}
+
+.prof-card:hover { border-color: var(--verre-hover); }
+
+.prof-card-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(0,212,200,0.1);
+  border: 1px solid rgba(0,212,200,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.prof-card-title {
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  color: var(--blanc);
+  margin-bottom: 10px;
+}
+
+.prof-card-body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  color: var(--gris-400);
+  line-height: 1.7;
+}
+
+/* ── PROBLÉMATIQUE ── */
+#problematique {
+  background: var(--bleu-nuit);
+  border-top: 1px solid var(--verre-bord);
+  border-bottom: 1px solid var(--verre-bord);
+}
+
+.question-box {
+  background: rgba(0,212,200,0.05);
+  border: 1px solid rgba(0,212,200,0.18);
+  border-radius: var(--rayon);
+  padding: 32px 36px;
+  margin-bottom: 40px;
+  font-family: 'Georgia', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--gris-300);
+  line-height: 1.65;
+  position: relative;
+}
+
+.question-box::before {
+  content: '❓';
+  position: absolute; top: -14px; left: 28px;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.boucle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.boucle-step {
+  background: var(--verre);
+  border: 1px solid var(--verre-bord);
+  border-radius: 12px;
+  padding: 24px 22px;
+  position: relative;
+  transition: border-color var(--transition);
+}
+
+.boucle-step:hover { border-color: rgba(0,212,200,0.3); }
+
+.boucle-num {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 10px;
+}
+
+.boucle-step-title {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  color: var(--blanc);
+  margin-bottom: 8px;
+}
+
+.boucle-step-desc {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  color: var(--gris-400);
+  line-height: 1.6;
+}
+
+/* ── ANATOMIE ── */
+.anatomie-tabs {
+  display: flex; gap: 4px;
+  margin-bottom: 28px;
+  background: var(--verre);
+  border: 1px solid var(--verre-bord);
+  border-radius: 10px;
+  padding: 4px;
+  width: fit-content;
+}
+
+.tab-btn {
+  padding: 8px 20px;
+  border: none; background: none;
+  border-radius: 7px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  color: var(--gris-400);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.tab-btn.active {
+  background: rgba(0,212,200,0.15);
+  color: var(--cyan);
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.anatomie-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.anatomie-item {
+  background: var(--verre);
+  border: 1px solid var(--verre-bord);
+  border-radius: 12px;
+  padding: 20px 22px;
+  cursor: default;
+  transition: border-color var(--transition);
+}
+
+.anatomie-item:hover { border-color: var(--verre-hover); }
+
+.anatomie-item-name {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  color: var(--blanc);
+  margin-bottom: 6px;
+}
+
+.anatomie-item-desc {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  color: var(--gris-400);
+  line-height: 1.6;
+}
+
+.nerve-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  display: inline-block; margin-right: 8px; vertical-align: middle;
+}
+
+/* ── SCÈNE 3D INTERACTIVE ── */
+#scene3d {
+  background: var(--bleu-nuit);
+  border-top: 1px solid var(--verre-bord);
+  border-bottom: 1px solid var(--verre-bord);
+}
+
+.scene-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  margin-top: 36px;
+  align-items: start;
+}
+
+#three-canvas-wrap {
+  background: var(--bleu-profond);
+  border: 1px solid var(--verre-bord);
+  border-radius: var(--rayon);
+  overflow: hidden;
+  position: relative;
+  height: 520px;
+}
+
+#three-canvas-wrap canvas { display: block; }
+
+.canvas-hint {
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--gris-500);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.info-panel {
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+.info-card {
+  background: var(--verre);
+  border: 1px solid var(--verre-bord);
+  border-radius: var(--rayon);
+  padding: 20px 22px;
+  transition: border-color var(--transition);
+}
+
+.info-card-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--cyan);
+  margin-bottom: 8px;
+}
+
+#info-name {
+  font-family: 'Georgia', serif;
+  font-size: 18px; color: var(--blanc);
+  margin-bottom: 6px;
+}
+
+#info-desc {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px; color: var(--gris-400);
+  line-height: 1.65;
+}
+
+.legende-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--verre-bord);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.legende-item:last-child { border-bottom: none; }
+.legende-item:hover .legende-label { color: var(--blanc); }
+
+.legende-swatch {
+  width: 24px; height: 3px; border-radius: 2px; flex-shrink: 0;
+}
+
+.legende-label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px; color: var(--gris-400);
+}
+
+/* ── RÉCEPTEURS ── */
+.recepteurs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.recepteur-card {
+  background: var(--verre);
+  border: 1px solid var(--verre-bord);
+  border-radius: var(--rayon);
+  padding: 28px 30px;
+  transition: border-color var(--transition);
+}
+
+.recepteur-card:hover { border-color: var(--verre-hover); }
+
+.recepteur-icon { font-size: 24px; margin-bottom: 14px; }
+
+.recepteur-title {
+  font-family: 'Georgia', serif;
+  font-size: 17px; color: var(--blanc);
+  margin-bottom: 8px;
+}
+
+.recepteur-type {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--cyan);
+  margin-bottom: 10px;
+}
+
+.recepteur-desc {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px; color: var(--gris-400);
+  line-height: 1.65;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--bleu-profond);
+  border-top: 1px solid var(--verre-bord);
+  padding: 48px 40px;
+  text-align: center;
+}
+
+.footer-title {
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  color: var(--or-clair);
+  margin-bottom: 8px;
+}
+
+.footer-sub {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px; color: var(--gris-500);
+  letter-spacing: 0.05em;
+}
+
+/* ── TOOLTIP ── */
+#tooltip3d {
+  position: fixed; z-index: 500;
+  pointer-events: none;
+  opacity: 0; transition: opacity 0.15s;
+}
+
+#tooltip3d.visible { opacity: 1; }
+
+.tooltip3d-inner {
+  background: var(--bleu-profond);
+  border: 1px solid rgba(0,212,200,0.3);
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  transform: translate(-50%, calc(-100% - 12px));
+  white-space: nowrap;
+}
+
+.tooltip3d-name {
+  font-family: 'Georgia', serif;
+  font-size: 14px; color: var(--blanc);
+}
+
+.tooltip3d-hint {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 11px; color: var(--cyan);
+  margin-top: 2px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .heritage-card { grid-template-columns: 1fr; }
+  .prof-grid { grid-template-columns: 1fr; }
+  .boucle-grid { grid-template-columns: 1fr 1fr; }
+  .scene-layout { grid-template-columns: 1fr; }
+  .recepteurs-grid { grid-template-columns: 1fr; }
+  #navbar { padding: 0 20px; }
+  .nav-links { display: none; }
+  .section { padding: 64px 20px; }
+}
+
+@media (max-width: 600px) {
+  .boucle-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 26px; }
+  .heritage-card { padding: 24px 20px; }
+  #three-canvas-wrap { height: 360px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<!-- BARRE DE NAVIGATION -->
+<nav id="navbar" role="navigation" aria-label="Navigation principale">
+  <div class="nav-brand"><span>Kibadi</span> · Chirurgie de la Main</div>
+  <div class="nav-spacer"></div>
+  <ul class="nav-links" role="list">
+    <li><a href="#heritage">Héritage</a></li>
+    <li><a href="#professeur">Le Professeur</a></li>
+    <li><a href="#problematique">Problématique</a></li>
+    <li><a href="#anatomie">Anatomie</a></li>
+    <li><a href="#scene3d">Scène 3D</a></li>
+    <li><a href="#recepteurs">Récepteurs</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" aria-label="Page d'accueil">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Éducation médicale avancée</div>
+    <h1 class="hero-title">
+      Chirurgie de la Main<br><em>de l'Africain</em><br>et le Système Nerveux
+    </h1>
+    <p class="hero-subtitle">Anatomie · Neurologie · Chirurgie reconstructive</p>
+    <p class="hero-intro">
+      La main est l'interface la plus sophistiquée entre le cerveau humain et le monde extérieur.
+      Comprendre comment le système nerveux central orchestre chaque mouvement et interprète chaque
+      sensation constitue le fondement de la chirurgie réparatrice moderne de la main.
+    </p>
+    <div class="hero-author">
+      <span>Projet éducatif par</span>
+      <strong>Anatole Kibadi Kapay </strong>
+    </div>
+  </div>
+  <div class="scroll-indicator" aria-hidden="true">
+    <div class="scroll-arrow"></div>
+    <span>Défiler</span>
+  </div>
+</section>
+
+<!-- HÉRITAGE -->
+<section id="heritage" aria-labelledby="heritage-title">
+  <div class="section">
+    <div class="section-eyebrow">Héritage médical</div>
+    <h2 class="section-title" id="heritage-title">Une continuité familiale<br>au service de la médecine africaine</h2>
+    <div class="section-divider"></div>
+    <p class="section-body">
+      Ce projet s'inscrit dans la continuité d'un héritage familial profondément ancré dans la médecine africaine.
+      Il représente à la fois un travail d'apprentissage scientifique et un témoignage de respect pour un père
+      dont les contributions au domaine chirurgical continuent d'inspirer une nouvelle génération.
+    </p>
+    <div class="heritage-card">
+      <div class="heritage-quote">
+        « L'auteur poursuit l'héritage de son père, le Professeur Anatole Kibadi Kapay, reconnu pour ses
+        contributions dans le domaine de la chirurgie de la main en Afrique. »
+      </div>
+      <div class="heritage-meta">
+        <div>
+          <div class="heritage-name">Anatole Kibadi Kapay JR</div>
+          <div class="heritage-role">Auteur du projet · Futur étudiant en sciences médicales, aspirant à poursuivre une formation dans ce domaine</div>
+        </div>
+        <div class="heritage-desc">
+          Héritier d'une tradition médicale rigoureuse, Anatole Kibadi Kapay JR s'engage dans l'étude
+          approfondie de la neuroanatomie de la main, perpétuant ainsi la mission éducative et scientifique
+          initiée par son père sur le continent africain.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFESSEUR -->
+<section id="professeur" aria-labelledby="prof-title">
+  <div class="section">
+    <div class="section-eyebrow">Biographie professionnelle</div>
+    <h2 class="section-title" id="prof-title">Le Professeur<br>Anatole Kibadi Kapay</h2>
+    <div class="section-divider"></div>
+    <p class="section-body">
+      Le Professeur Anatole Kibadi Kapay est un chirurgien spécialisé dans la chirurgie de la main,
+      dont les travaux ont contribué au développement et à l'amélioration des techniques chirurgicales
+      appliquées aux pathologies de la main sur le continent africain.
+    </p>
+    <p class="section-body">
+      Son engagement dans la formation médicale et l'avancement des connaissances en chirurgie reconstructive
+      de la main témoigne d'une vision à long terme pour la médecine africaine : celle d'une spécialité
+      chirurgicale de haut niveau, accessible et en constante évolution. 
+      Pour en savoir davantage sur le parcours professionnel du Professeur Anatole Kibadi Kapay, veuillez consulter se lien : <a href="https://www.drkibadi.com/userfiles/downloads/Curriculum%20Vitae%20%20(CV%20detaill%C3%A9)%20du%20Professeur%20Docteur%20Anatole%20KIBADI%20KAPAY,%20MD,%20PhD%20%20(%202024-2025).pdf" target="_blank" rel="noopener noreferrer" style="color: var(--cyan); text-decoration: underline;">Profil ResearchGate</a>.
+    <div class="prof-grid" role="list">
+      <div class="prof-card" role="listitem">
+        <div class="prof-card-icon" aria-hidden="true">🖐</div>
+        <h3 class="prof-card-title">Chirurgie spécialisée de la main</h3>
+        <p class="prof-card-body">Expertise dans la prise en charge chirurgicale des traumatismes, des malformations et des pathologies neurologiques affectant la main et les structures nerveuses associées.</p>
+      </div>
+      <div class="prof-card" role="listitem">
+        <div class="prof-card-icon" aria-hidden="true">🌍</div>
+        <h3 class="prof-card-title">Impact sur la médecine africaine</h3>
+        <p class="prof-card-body">Contribution à l'implantation et au développement de pratiques chirurgicales avancées en Afrique, réduisant les disparités d'accès aux soins spécialisés de la main.</p>
+      </div>
+      <div class="prof-card" role="listitem">
+        <div class="prof-card-icon" aria-hidden="true">🎓</div>
+        <h3 class="prof-card-title">Formation médicale</h3>
+        <p class="prof-card-body">Engagement dans la transmission du savoir chirurgical aux nouvelles générations de médecins, avec une attention particulière aux techniques adaptées aux réalités cliniques africaines.</p>
+      </div>
+      <div class="prof-card" role="listitem">
+        <div class="prof-card-icon" aria-hidden="true">🔬</div>
+        <h3 class="prof-card-title">Recherche et innovation</h3>
+        <p class="prof-card-body">Intérêt pour la recherche en chirurgie reconstructive, notamment la réparation nerveuse périphérique et la restauration fonctionnelle de la main après traumatisme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLÉMATIQUE -->
+<section id="problematique" aria-labelledby="prob-title">
+  <div class="section">
+    <div class="section-eyebrow">Problématique centrale</div>
+    <h2 class="section-title" id="prob-title">Le dialogue entre la main<br>et le cerveau</h2>
+    <div class="section-divider"></div>
+    <div class="question-box" role="note">
+      Comment la connexion entre la main et le système nerveux central permet-elle la réalisation
+      de mouvements précis et la perception du monde extérieur ?
+    </div>
+    <p class="section-body">
+      La réponse à cette question engage plusieurs niveaux d'organisation biologique : de la cellule
+      nerveuse individuelle aux circuits corticaux les plus complexes. La main n'est pas un simple
+      effecteur mécanique — elle est le prolongement sensoriel et moteur du cerveau, capable de
+      sculpter, ressentir, communiquer et créer.
+    </p>
+    <div class="boucle-grid" role="list" aria-label="Étapes de la boucle sensori-motrice">
+      <div class="boucle-step" role="listitem">
+        <div class="boucle-num">Étape 1</div>
+        <h3 class="boucle-step-title">Stimulation périphérique</h3>
+        <p class="boucle-step-desc">Un stimulus (pression, chaleur, douleur) active les récepteurs cutanés et proprioceptifs de la main, générant un potentiel d'action.</p>
+      </div>
+      <div class="boucle-step" role="listitem">
+        <div class="boucle-num">Étape 2</div>
+        <h3 class="boucle-step-title">Transmission afférente</h3>
+        <p class="boucle-step-desc">L'influx nerveux remonte via les nerfs médian, ulnaire et radial jusqu'à la moelle épinière, puis vers le thalamus et le cortex somatosensoriel.</p>
+      </div>
+      <div class="boucle-step" role="listitem">
+        <div class="boucle-num">Étape 3</div>
+        <h3 class="boucle-step-title">Traitement cortical</h3>
+        <p class="boucle-step-desc">Le cortex somatosensoriel primaire (aire S1) intègre les informations sensorielles. La main occupe une superficie corticale disproportionnée — l'homoncule de Penfield.</p>
+      </div>
+      <div class="boucle-step" role="listitem">
+        <div class="boucle-num">Étape 4</div>
+        <h3 class="boucle-step-title">Décision motrice</h3>
+        <p class="boucle-step-desc">Le cortex moteur primaire (aire M1) et le cortex prémoteur élaborent la réponse motrice. Les neurones pyramidaux envoient des commandes précises via le faisceau corticospinal.</p>
+      </div>
+      <div class="boucle-step" role="listitem">
+        <div class="boucle-num">Étape 5</div>
+        <h3 class="boucle-step-title">Transmission efférente</h3>
+        <p class="boucle-step-desc">L'influx moteur descend par la moelle épinière et les nerfs périphériques jusqu'aux muscles intrinsèques et extrinsèques de la main, induisant la contraction.</p>
+      </div>
+      <div class="boucle-step" role="listitem">
+        <div class="boucle-num">Étape 6</div>
+        <h3 class="boucle-step-title">Rétroaction sensorielle</h3>
+        <p class="boucle-step-desc">Le mouvement exécuté génère de nouvelles afférences proprioceptives qui permettent au cervelet d'ajuster en temps réel la précision du geste — la boucle est fermée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANATOMIE -->
+<section id="anatomie" aria-labelledby="anat-title">
+  <div class="section">
+    <div class="section-eyebrow">Sciences anatomiques</div>
+    <h2 class="section-title" id="anat-title">Anatomie de la main<br>et structures nerveuses</h2>
+    <div class="section-divider"></div>
+    <div class="anatomie-tabs" role="tablist" aria-label="Catégories anatomiques">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-main" onclick="switchTab('main')">La Main</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-nerfs" onclick="switchTab('nerfs')">Système Nerveux</button>
+    </div>
+    <div id="tab-main" class="tab-content active" role="tabpanel">
+      <ul class="anatomie-list" aria-label="Structures de la main">
+        <li class="anatomie-item">
+          <div class="anatomie-item-name">Phalanges</div>
+          <p class="anatomie-item-desc">14 os par main (3 par doigt, 2 pour le pouce). Distales, moyennes et proximales, articulées entre elles par des articulations interphalangiennes.</p>
+        </li>
+        <li class="anatomie-item">
+          <div class="anatomie-item-name">Métacarpiens</div>
+          <p class="anatomie-item-desc">5 os formant le squelette de la paume. Ils relient les phalanges aux os du carpe et constituent la base mécanique des mouvements de la main.</p>
+        </li>
+        <li class="anatomie-item">
+          <div class="anatomie-item-name">Os du carpe</div>
+          <p class="anatomie-item-desc">8 os disposés en deux rangées au niveau du poignet. Ils transmettent les forces entre la main et l'avant-bras tout en autorisant la mobilité multidirectionnelle.</p>
+        </li>
+        <li class="anatomie-item">
+          <div class="anatomie-item-name">Tendons fléchisseurs</div>
+          <p class="anatomie-item-desc">Transmettent la force des muscles de l'avant-bras aux doigts pour la flexion. Cheminent dans le canal carpien, en contact étroit avec le nerf médian.</p>
+        </li>
+        <li class="anatomie-item">
+          <div class="anatomie-item-name">Tendons extenseurs</div>
+          <p class="anatomie-item-desc">Permettent l'extension des doigts et du poignet. Leur lésion produit des déformations caractéristiques comme la déformation en col de cygne ou en boutonnière.</p>
+        </li>
+        <li class="anatomie-item">
+          <div class="anatomie-item-name">Muscles intrinsèques</div>
+          <p class="anatomie-item-desc">Lombricaux, interosseux, thénar et hypothénar : ils assurent la motricité fine, la préhension de précision et l'opposition du pouce, unique à l'espèce humaine.</p>
+        </li>
+      </ul>
+    </div>
+    <div id="tab-nerfs" class="tab-content" role="tabpanel">
+      <ul class="anatomie-list" aria-label="Structures nerveuses">
+        <li class="anatomie-item">
+          <div class="anatomie-item-name"><span class="nerve-dot" style="background:#00d4c8"></span>Cortex moteur (M1)</div>
+          <p class="anatomie-item-desc">Aire 4 de Brodmann. Siège de la planification et de l'exécution motrice volontaire. La main y occupe une représentation corticale étendue — reflet de la complexité de sa motricité.</p>
+        </li>
+        <li class="anatomie-item">
+          <div class="anatomie-item-name"><span class="nerve-dot" style="background:#22d3ee"></span>Cortex somatosensoriel (S1)</div>
+          <p class="anatomie-item-desc">Aires 3, 1 et 2 de Brodmann. Reçoit et traite les informations tactiles, proprioceptives et douloureuses. La main représente environ 25 % de la surface corticale sensorielle totale.</p>
+        </li>
+        <li class="anatomie-item">
+          <div class="anatomie-item-name"><span class="nerve-dot" style="background:#1d9bf0"></span>Moelle épinière</div>
+          <p class="anatomie-item-desc">Conduit les influx afférents (voies spinothalamiques et lemniscales) et efférents (faisceau corticospinal). Le niveau cervical C6–T1 innerve la main.</p>
+        </li>
+        <li class="anatomie-item">
+          <div class="anatomie-item-name"><span class="nerve-dot" style="background:#3b82f6"></span>Nerf médian</div>
+          <p class="anatomie-item-desc">Racines C6–T1. Innerve la peau des 3½ doigts radiaux et contrôle les muscles thénariens. Sa compression dans le canal carpien cause le syndrome du canal carpien.</p>
+        </li>
+        <li class="anatomie-item">
+          <div class="anatomie-item-name"><span class="nerve-dot" style="background:#8b5cf6"></span>Nerf ulnaire</div>
+          <p class="anatomie-item-desc">Racines C8–T1. Innerve le 5e doigt et la moitié ulnaire du 4e, ainsi que la plupart des muscles intrinsèques. Sa lésion provoque la « griffe cubitale ».</p>
+        </li>
+        <li class="anatomie-item">
+          <div class="anatomie-item-name"><span class="nerve-dot" style="background:#d4a017"></span>Nerf radial</div>
+          <p class="anatomie-item-desc">Racines C5–T1. Principalement moteur au niveau du poignet et des doigts (extenseurs). Sa lésion cause la « chute du poignet » (wrist drop) caractéristique.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SCÈNE 3D INTERACTIVE -->
+<section id="scene3d" aria-labelledby="scene-title">
+  <div class="section">
+    <div class="section-eyebrow">Visualisation interactive</div>
+    <h2 class="section-title" id="scene-title">Scène 3D — Main, nerfs<br>et système nerveux central</h2>
+    <div class="section-divider"></div>
+    <p class="section-body" style="margin-bottom:0;">
+      Explorez la connexion anatomique entre la main et le cerveau. Cliquez sur une structure pour
+      afficher ses informations détaillées. Les flux lumineux représentent les signaux nerveux en transit.
+    </p>
+    <div class="scene-layout">
+      <div id="three-canvas-wrap" role="img" aria-label="Scène 3D interactive de la main et du système nerveux">
+        <div class="canvas-hint" aria-hidden="true">Cliquer · Tourner · Zoomer</div>
+      </div>
+      <div class="info-panel" role="complementary" aria-label="Panneau d'informations">
+        <div class="info-card">
+          <div class="info-card-label">Structure sélectionnée</div>
+          <div id="info-name">Aucune sélection</div>
+          <div id="info-desc" style="margin-top:8px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;color:var(--gris-400);line-height:1.65;">
+            Cliquez sur une structure dans la scène 3D pour afficher ses informations anatomiques et fonctionnelles.
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Légende</div>
+          <div class="legende-item" onclick="focusStructure('cerveau')">
+            <div class="legende-swatch" style="background:#00d4c8"></div>
+            <span class="legende-label">Cerveau (SNC)</span>
+          </div>
+          <div class="legende-item" onclick="focusStructure('moelle')">
+            <div class="legende-swatch" style="background:#38bdf8"></div>
+            <span class="legende-label">Moelle épinière</span>
+          </div>
+          <div class="legende-item" onclick="focusStructure('median')">
+            <div class="legende-swatch" style="background:#3b82f6"></div>
+            <span class="legende-label">Nerf médian</span>
+          </div>
+          <div class="legende-item" onclick="focusStructure('ulnaire')">
+            <div class="legende-swatch" style="background:#8b5cf6"></div>
+            <span class="legende-label">Nerf ulnaire</span>
+          </div>
+          <div class="legende-item" onclick="focusStructure('radial')">
+            <div class="legende-swatch" style="background:#d4a017"></div>
+            <span class="legende-label">Nerf radial</span>
+          </div>
+          <div class="legende-item" onclick="focusStructure('main')">
+            <div class="legende-swatch" style="background:#94a3b8"></div>
+            <span class="legende-label">Main (os)</span>
+          </div>
+          <div class="legende-item">
+            <div class="legende-swatch" style="background:linear-gradient(90deg,#fbbf24,#f97316)"></div>
+            <span class="legende-label">Signal nerveux</span>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Commandes</div>
+          <p style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;color:var(--gris-500);line-height:1.7;">
+            🖱 Clic gauche + glisser → Rotation<br>
+            🖱 Molette → Zoom<br>
+            🖱 Clic droit + glisser → Déplacement<br>
+            📱 Deux doigts → Zoom tactile
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RÉCEPTEURS SENSORIELS -->
+<section id="recepteurs" aria-labelledby="rec-title">
+  <div class="section">
+    <div class="section-eyebrow">Neurophysiologie sensorielle</div>
+    <h2 class="section-title" id="rec-title">Les récepteurs sensoriels<br>de la main</h2>
+    <div class="section-divider"></div>
+    <p class="section-body">
+      La main est l'organe sensoriel le plus densément innervé du corps humain. Chaque centimètre carré
+      de pulpe digitale contient des centaines de récepteurs spécialisés, capables de distinguer
+      des textures, des températures et des pressions d'une précision remarquable.
+    </p>
+    <div class="recepteurs-grid" role="list">
+      <div class="recepteur-card" role="listitem">
+        <div class="recepteur-icon" aria-hidden="true">👆</div>
+        <div class="recepteur-type">Mécanoréception</div>
+        <h3 class="recepteur-title">Mécanorécepteurs</h3>
+        <p class="recepteur-desc">
+          Les corpuscules de Meissner (toucher léger, basse fréquence), de Pacini (vibration, haute fréquence),
+          de Merkel (pression soutenue, discrimination spatiale fine) et de Ruffini (étirement cutané)
+          constituent un ensemble de capteurs complémentaires permettant l'analyse multidimensionnelle
+          des objets manipulés.
+        </p>
+      </div>
+      <div class="recepteur-card" role="listitem">
+        <div class="recepteur-icon" aria-hidden="true">🌡</div>
+        <div class="recepteur-type">Thermoréception</div>
+        <h3 class="recepteur-title">Thermorécepteurs</h3>
+        <p class="recepteur-desc">
+          Les terminaisons libres thermosensibles (canaux TRPV1, TRPM8) détectent les températures
+          de la chaleur (>43°C) jusqu'au froid (<15°C). Cette sensibilité thermique joue un rôle
+          protecteur essentiel et contribue à la discrimination des matériaux par leurs propriétés
+          thermiques.
+        </p>
+      </div>
+      <div class="recepteur-card" role="listitem">
+        <div class="recepteur-icon" aria-hidden="true">⚡</div>
+        <div class="recepteur-type">Nociception</div>
+        <h3 class="recepteur-title">Nocicepteurs</h3>
+        <p class="recepteur-desc">
+          Les nocicepteurs (fibres Aδ rapides et fibres C lentes) détectent les stimuli potentiellement
+          lésionnels. La douleur de la main déclenche des réflexes de retrait spinaux rapides, protégeant
+          les structures anatomiques avant même que la douleur ne soit conscientisée au niveau cortical.
+        </p>
+      </div>
+      <div class="recepteur-card" role="listitem">
+        <div class="recepteur-icon" aria-hidden="true">🎯</div>
+        <div class="recepteur-type">Proprioception</div>
+        <h3 class="recepteur-title">Proprioception</h3>
+        <p class="recepteur-desc">
+          Les fuseaux neuromusculaires (étirement musculaire) et les organes tendineux de Golgi (tension)
+          renseignent le cerveau sur la position et la force exercée par chaque doigt. Cette proprioception
+          fine est indispensable à la pince de précision, à l'écriture et à la manipulation d'instruments
+          chirurgicaux.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-title">Anatole Kibadi Kapay JR</div>
+  <p class="footer-sub" style="margin-top:4px;">Projet éducatif en neuroanatomie de la main · Dans la continuité du Professeur Anatole Kibadi Kapay</p>
+  <p class="footer-sub" style="margin-top:16px;">Chirurgie de la main de l'Africain et le Système Nerveux</p>
+</footer>
+
+<!-- TOOLTIP 3D -->
+<div id="tooltip3d" role="tooltip">
+  <div class="tooltip3d-inner">
+    <div class="tooltip3d-name" id="tt-name"></div>
+    <div class="tooltip3d-hint">Cliquer pour les détails</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     HERO CANVAS — PARTICULES DE FOND
+═══════════════════════════════════════════════ -->
+<script>
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], lines = [];
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function makeParticle() {
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      r: Math.random() * 1.5 + 0.5,
+      a: Math.random() * 0.5 + 0.1,
+      pulse: Math.random() * Math.PI * 2,
+    };
+  }
+
+  function init() {
+    resize();
+    particles = [];
+    for (let i = 0; i < 80; i++) particles.push(makeParticle());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    if (prefersReduced) return;
+
+    const t = Date.now() * 0.001;
+
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      p.pulse += 0.02;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+
+      const alpha = p.a * (0.7 + Math.sin(p.pulse) * 0.3);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0,212,200,${alpha})`;
+      ctx.fill();
+    });
+
+    // Connexions entre particules proches
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 100) {
+          const alpha = (1 - dist/100) * 0.12;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0,212,200,${alpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); });
+  init();
+  draw();
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════════
+     ONGLETS ANATOMIE
+═══════════════════════════════════════════════ -->
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    const tabId = ['main','nerfs'][i];
+    btn.classList.toggle('active', tabId === id);
+    btn.setAttribute('aria-selected', tabId === id);
+  });
+  document.querySelectorAll('.tab-content').forEach(tc => {
+    tc.classList.toggle('active', tc.id === 'tab-' + id);
+  });
+}
+</script>
+
+<!-- ═══════════════════════════════════════════════
+     THREE.JS — SCÈNE 3D PRINCIPALE
+═══════════════════════════════════════════════ -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+/* ── DONNÉES STRUCTURES ── */
+const STRUCTURES_DATA = {
+  cerveau: {
+    nom: 'Cerveau',
+    soustitre: 'Système nerveux central',
+    description: 'Le cerveau traite les informations sensorielles de la main dans le cortex somatosensoriel primaire (S1) et planifie les mouvements via le cortex moteur primaire (M1). La main occupe une surface corticale disproportionnée — l\'homoncule de Penfield — reflétant la précision et la complexité de sa motricité.',
+  },
+  moelle: {
+    nom: 'Moelle épinière',
+    soustitre: 'Système nerveux central',
+    description: 'Conduit de communication entre le cerveau et la périphérie. Les niveaux C6–T1 innervent la main. Les voies ascendantes (spinothalamique, lemniscale médiale) transmettent les sensations ; les voies descendantes (corticospinale) portent les commandes motrices.',
+  },
+  median: {
+    nom: 'Nerf médian',
+    soustitre: 'Racines C6–T1 · Plexus brachial',
+    description: 'Chemine dans le canal carpien au poignet. Innerve la sensibilité des 3½ doigts radiaux (pouce, index, majeur, moitié radiale de l\'annulaire) et contrôle les muscles thénariens (opposition du pouce). Sa compression = syndrome du canal carpien.',
+  },
+  ulnaire: {
+    nom: 'Nerf ulnaire',
+    soustitre: 'Racines C8–T1 · Plexus brachial',
+    description: 'Contourne le coude par la gouttière épitrochléo-olécrânienne. Innerve la sensibilité du 5e doigt et de la moitié ulnaire du 4e, et la grande majorité des muscles intrinsèques. Sa lésion provoque la « griffe cubitale » : flexion des 4e et 5e doigts.',
+  },
+  radial: {
+    nom: 'Nerf radial',
+    soustitre: 'Racines C5–T1 · Plexus brachial',
+    description: 'Innerve principalement les muscles extenseurs du poignet et des doigts. Sa lésion au niveau du bras (fracture humérale) produit la « chute du poignet » (wrist drop) : impossibilité d\'étendre le poignet et les doigts.',
+  },
+  main: {
+    nom: 'Main — squelette osseux',
+    soustitre: '27 os · Anatomie fonctionnelle',
+    description: 'La main comprend 8 os du carpe, 5 métacarpiens et 14 phalanges. Sa mobilité multidirectionnelle (flexion, extension, abduction, adduction, opposition du pouce) en fait l\'effecteur le plus polyvalent du corps humain — indissociable de son innervation nerveuse.',
+  },
+};
+
+/* ── INIT RENDERER ── */
+const wrap = document.getElementById('three-canvas-wrap');
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+wrap.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x080f1e);
+scene.fog = new THREE.Fog(0x080f1e, 25, 50);
+
+const camera = new THREE.PerspectiveCamera(45, wrap.clientWidth / wrap.clientHeight, 0.1, 100);
+camera.position.set(0, 1, 16);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.07;
+controls.minDistance = 6;
+controls.maxDistance = 22;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.5;
+
+/* ── LUMIÈRES ── */
+scene.add(new THREE.AmbientLight(0x0d2040, 4));
+const key = new THREE.DirectionalLight(0x60c8ff, 2.5);
+key.position.set(5, 10, 5); key.castShadow = true; scene.add(key);
+const fill = new THREE.DirectionalLight(0x00d4c8, 1.2);
+fill.position.set(-5, 4, -3); scene.add(fill);
+const pt = new THREE.PointLight(0x00d4c8, 2, 10);
+pt.position.set(0, 4, 3); scene.add(pt);
+
+/* ── HELPERS GÉOMÉTRIE ── */
+function tube(pts, r, seg = 8) {
+  const curve = new THREE.CatmullRomCurve3(pts);
+  return new THREE.TubeGeometry(curve, Math.max(pts.length*3, 10), r, seg, false);
+}
+
+function mat(color, emissive = 0x000000, roughness = 0.6, metalness = 0.05, opacity = 1) {
+  return new THREE.MeshStandardMaterial({
+    color, emissive, emissiveIntensity: 0.15,
+    roughness, metalness,
+    transparent: opacity < 1, opacity,
+  });
+}
+
+/* ── GROUPES ── */
+const root = new THREE.Group();
+scene.add(root);
+
+const clickables = [];
+
+function addMesh(geo, material, pos, scale = [1,1,1], structId = null) {
+  const m = new THREE.Mesh(geo, material);
+  m.position.set(...pos);
+  m.scale.set(...scale);
+  m.castShadow = true;
+  if (structId) { m.userData.structureId = structId; clickables.push(m); }
+  return m;
+}
+
+/* ═══════════ CERVEAU ═══════════ */
+const cerveau = new THREE.Group();
+
+const hL = addMesh(new THREE.SphereGeometry(1.1, 32, 24), mat(0x00b5aa, 0x003333), [-0.25, 9.8, 0], [1, 0.85, 1.05], 'cerveau');
+const hR = addMesh(new THREE.SphereGeometry(1.1, 32, 24), mat(0x00b5aa, 0x003333), [0.25, 9.8, 0], [1, 0.85, 1.05], 'cerveau');
+const fL = addMesh(new THREE.SphereGeometry(0.65, 20, 14), mat(0x009e94, 0x002828), [-0.55, 9.9, 0.85], [1,0.9,1], 'cerveau');
+const fR = addMesh(new THREE.SphereGeometry(0.65, 20, 14), mat(0x009e94, 0x002828), [0.55, 9.9, 0.85], [1,0.9,1], 'cerveau');
+const occ = addMesh(new THREE.SphereGeometry(0.7, 20, 14), mat(0x009e94, 0x002828), [0, 9.5, -0.95], [1.2,0.8,1], 'cerveau');
+const tL = addMesh(new THREE.SphereGeometry(0.6, 20, 14), mat(0x007a73, 0x001a1a), [-1.2, 8.9, 0.2], [1,0.8,0.9], 'cerveau');
+const tR = addMesh(new THREE.SphereGeometry(0.6, 20, 14), mat(0x007a73, 0x001a1a), [1.2, 8.9, 0.2], [1,0.8,0.9], 'cerveau');
+
+// Cerebellum
+const cereb = addMesh(new THREE.SphereGeometry(0.75, 24, 16), mat(0x0891b2, 0x002233), [0, 8.2, -0.85], [1.5, 0.7, 1], 'cerveau');
+const cerebL = addMesh(new THREE.SphereGeometry(0.55, 18, 12), mat(0x0891b2, 0x002233), [-0.7, 8.15, -0.9], [1, 0.65, 0.85], 'cerveau');
+const cerebR = addMesh(new THREE.SphereGeometry(0.55, 18, 12), mat(0x0891b2, 0x002233), [0.7, 8.15, -0.9], [1, 0.65, 0.85], 'cerveau');
+
+// Brainstem
+const bsGeo = new THREE.CylinderGeometry(0.28, 0.32, 1.2, 16);
+const bs = addMesh(bsGeo, mat(0x0369a1, 0x001526), [0, 7.7, 0.2], [1,1,1], 'cerveau');
+
+[hL, hR, fL, fR, occ, tL, tR, cereb, cerebL, cerebR, bs].forEach(m => cerveau.add(m));
+root.add(cerveau);
+
+/* ═══════════ MOELLE ÉPINIÈRE ═══════════ */
+const moellePts = [
+  new THREE.Vector3(0, 7.2, 0.1),
+  new THREE.Vector3(0.04, 5.5, 0.05),
+  new THREE.Vector3(0, 3.5, 0),
+  new THREE.Vector3(-0.04, 1.0, 0),
+  new THREE.Vector3(0, -1.5, 0),
+  new THREE.Vector3(0, -3.8, 0),
+];
+const moelleMesh = new THREE.Mesh(tube(moellePts, 0.18, 10), mat(0x1d9bf0, 0x001040, 0.7));
+moelleMesh.userData.structureId = 'moelle';
+moelleMesh.castShadow = true;
+clickables.push(moelleMesh);
+root.add(moelleMesh);
+
+// Vertèbres décoratives
+for (let y = 6.8; y > -3.0; y -= 0.38) {
+  const vGeo = new THREE.BoxGeometry(0.6, 0.14, 0.4);
+  const vMat = new THREE.MeshStandardMaterial({ color: 0x1a3355, roughness: 0.85, metalness: 0.1 });
+  const v = new THREE.Mesh(vGeo, vMat);
+  v.position.set(0, y, -0.05);
+  root.add(v);
+}
+
+/* ═══════════ NERFS DU BRAS ═══════════ */
+function makeNerveBrass(side) {
+  const s = side;
+
+  // Nerf médian
+  const medPts = [
+    new THREE.Vector3(s*0.18, 3.8, 0),
+    new THREE.Vector3(s*0.6, 2.5, 0.1),
+    new THREE.Vector3(s*1.0, 1.0, 0.1),
+    new THREE.Vector3(s*1.2, -1.0, 0.05),
+    new THREE.Vector3(s*1.25, -2.5, 0),
+    new THREE.Vector3(s*1.2, -4.0, -0.05),
+  ];
+  const med = new THREE.Mesh(tube(medPts, 0.04, 6), mat(0x2563eb, 0x001030, 0.5, 0.1, 0.85));
+  med.userData.structureId = 'median';
+  clickables.push(med);
+  root.add(med);
+
+  // Nerf ulnaire
+  const ulnPts = [
+    new THREE.Vector3(s*0.18, 3.5, 0),
+    new THREE.Vector3(s*0.7, 2.2, -0.1),
+    new THREE.Vector3(s*1.1, 0.5, -0.1),
+    new THREE.Vector3(s*1.3, -1.5, -0.1),
+    new THREE.Vector3(s*1.35, -3.0, -0.05),
+    new THREE.Vector3(s*1.3, -4.2, 0),
+  ];
+  const uln = new THREE.Mesh(tube(ulnPts, 0.035, 6), mat(0x7c3aed, 0x200030, 0.5, 0.1, 0.8));
+  uln.userData.structureId = 'ulnaire';
+  clickables.push(uln);
+  root.add(uln);
+
+  // Nerf radial
+  const radPts = [
+    new THREE.Vector3(s*0.15, 4.0, 0.05),
+    new THREE.Vector3(s*0.8, 2.8, 0.2),
+    new THREE.Vector3(s*1.15, 1.2, 0.2),
+    new THREE.Vector3(s*1.28, -0.8, 0.15),
+    new THREE.Vector3(s*1.3, -2.2, 0.1),
+    new THREE.Vector3(s*1.25, -3.8, 0.05),
+  ];
+  const rad = new THREE.Mesh(tube(radPts, 0.035, 6), mat(0xb45309, 0x301000, 0.5, 0.1, 0.8));
+  rad.userData.structureId = 'radial';
+  clickables.push(rad);
+  root.add(rad);
+}
+
+makeNerveBrass(-1);
+makeNerveBrass(1);
+
+/* ═══════════ MAIN SIMPLIFIÉE ═══════════ */
+const mainGroup = new THREE.Group();
+const mainMat = mat(0x64748b, 0x101820, 0.8, 0.15);
+
+// Paume
+const paume = new THREE.Mesh(new THREE.BoxGeometry(1.0, 0.14, 1.3), mainMat.clone());
+paume.position.set(0, -4.9, 0.2);
+paume.userData.structureId = 'main';
+clickables.push(paume);
+mainGroup.add(paume);
+
+// Doigts (5 doigts x 3 phalanges)
+const fingerData = [
+  { x: -0.38, baseZ: -0.32, lengths: [0.38, 0.28, 0.2] },
+  { x: -0.19, baseZ: -0.4,  lengths: [0.44, 0.32, 0.22] },
+  { x:  0.0,  baseZ: -0.42, lengths: [0.46, 0.34, 0.24] },
+  { x:  0.19, baseZ: -0.38, lengths: [0.42, 0.3, 0.2] },
+  { x:  0.38, baseZ: -0.28, lengths: [0.32, 0.22, 0.16] },
+];
+
+fingerData.forEach(f => {
+  let yOff = -4.82;
+  f.lengths.forEach((len, i) => {
+    const fg = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.065 - i*0.01, 0.07 - i*0.01, len, 10),
+      mainMat.clone()
+    );
+    fg.position.set(f.x, yOff - len/2, f.baseZ + i*0.015);
+    fg.userData.structureId = 'main';
+    clickables.push(fg);
+    mainGroup.add(fg);
+    yOff -= len + 0.02;
+  });
+});
+
+// Pouce
+const thumbPts = [
+  { x:-0.52, y:-4.9, z:0.4, len:0.32 },
+  { x:-0.62, y:-5.1, z:0.55, len:0.24 },
+];
+thumbPts.forEach(t => {
+  const tg = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.075, t.len, 10), mainMat.clone());
+  tg.position.set(t.x, t.y, t.z);
+  tg.rotation.z = 0.5;
+  tg.userData.structureId = 'main';
+  clickables.push(tg);
+  mainGroup.add(tg);
+});
+
+root.add(mainGroup);
+
+/* ═══════════ SIGNAUX NERVEUX ANIMÉS ═══════════ */
+const signalPaths = [
+  // Cerveau → moelle → médian → main
+  [
+    new THREE.Vector3(0.1, 7.3, 0.1),
+    new THREE.Vector3(0, 5.5, 0.05),
+    new THREE.Vector3(0, 3.5, 0),
+    new THREE.Vector3(-0.3, 1.5, 0.05),
+    new THREE.Vector3(-0.6, 0.0, 0.1),
+    new THREE.Vector3(-1.0, -1.5, 0.1),
+    new THREE.Vector3(-1.2, -3.0, 0),
+    new THREE.Vector3(-1.2, -4.2, -0.05),
+    new THREE.Vector3(-0.19, -4.9, -0.4),
+  ],
+  // Médian → cerveau (afférent)
+  [
+    new THREE.Vector3(0.19, -5.3, -0.4),
+    new THREE.Vector3(1.25, -4.0, -0.05),
+    new THREE.Vector3(1.2, -2.5, 0.05),
+    new THREE.Vector3(0.6, 0.0, 0.1),
+    new THREE.Vector3(0.2, 2.5, 0.05),
+    new THREE.Vector3(0.1, 5.0, 0.05),
+    new THREE.Vector3(0.05, 7.3, 0.1),
+  ],
+  // Ulnaire
+  [
+    new THREE.Vector3(-0.18, 3.5, 0),
+    new THREE.Vector3(-0.7, 1.5, -0.1),
+    new THREE.Vector3(-1.1, -0.5, -0.1),
+    new THREE.Vector3(-1.3, -2.0, -0.1),
+    new THREE.Vector3(-1.3, -3.5, -0.05),
+    new THREE.Vector3(-0.38, -4.82, -0.32),
+  ],
+  // Radial
+  [
+    new THREE.Vector3(0.15, 4.0, 0.05),
+    new THREE.Vector3(0.8, 2.2, 0.2),
+    new THREE.Vector3(1.15, 0.5, 0.2),
+    new THREE.Vector3(1.28, -1.5, 0.15),
+    new THREE.Vector3(1.25, -3.2, 0.1),
+    new THREE.Vector3(0.38, -4.82, -0.28),
+  ],
+];
+
+class Signal {
+  constructor(path, delay) {
+    this.curve = new THREE.CatmullRomCurve3(path);
+    this.t = delay;
+    this.speed = 0.15 + Math.random() * 0.1;
+    this.mesh = new THREE.Mesh(
+      new THREE.SphereGeometry(0.055, 8, 6),
+      new THREE.MeshBasicMaterial({ color: 0xfbbf24, transparent: true, opacity: 0.95 })
+    );
+    this.trails = [];
+    for (let i = 0; i < 4; i++) {
+      const tr = new THREE.Mesh(
+        new THREE.SphereGeometry(0.035 - i*0.007, 6, 4),
+        new THREE.MeshBasicMaterial({ color: 0xf97316, transparent: true, opacity: 0.5 - i*0.1 })
+      );
+      this.trails.push(tr);
+      root.add(tr);
+    }
+    root.add(this.mesh);
+  }
+  update(dt) {
+    this.t += dt * this.speed;
+    if (this.t > 1) this.t -= 1;
+    const p = this.curve.getPoint(Math.min(1, this.t));
+    this.mesh.position.copy(p);
+    this.trails.forEach((tr, i) => {
+      const tt = Math.max(0, this.t - (i+1)*0.025);
+      tr.position.copy(this.curve.getPoint(Math.min(1, tt)));
+    });
+  }
+}
+
+const signals = [];
+signalPaths.forEach((path, i) => {
+  const n = i < 2 ? 3 : 2;
+  for (let j = 0; j < n; j++) signals.push(new Signal(path, j/n));
+});
+
+/* ═══════════ RAYCASTING ═══════════ */
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+const tooltip = document.getElementById('tooltip3d');
+const ttName = document.getElementById('tt-name');
+let hovered = null, selected = null;
+const origMats = new WeakMap();
+
+function highlight(obj, on) {
+  if (!obj) return;
+  if (on) {
+    if (!origMats.has(obj)) origMats.set(obj, obj.material);
+    const m = obj.material.clone();
+    m.emissive = new THREE.Color(0x00d4c8);
+    m.emissiveIntensity = 0.55;
+    obj.material = m;
+  } else {
+    if (origMats.has(obj)) { obj.material = origMats.get(obj); }
+  }
+}
+
+function setInfo(id) {
+  const d = STRUCTURES_DATA[id];
+  if (!d) return;
+  document.getElementById('info-name').textContent = d.nom;
+  document.getElementById('info-desc').textContent = d.description;
+}
+
+renderer.domElement.addEventListener('pointermove', e => {
+  const rect = renderer.domElement.getBoundingClientRect();
+  mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObjects(clickables, false);
+  if (hits.length > 0) {
+    const obj = hits[0].object;
+    const id = obj.userData.structureId;
+    if (obj !== hovered) {
+      if (hovered && hovered !== selected) highlight(hovered, false);
+      hovered = obj;
+      if (hovered !== selected) highlight(hovered, true);
+    }
+    renderer.domElement.style.cursor = 'pointer';
+    ttName.textContent = STRUCTURES_DATA[id]?.nom || id;
+    tooltip.style.left = e.clientX + 'px';
+    tooltip.style.top = e.clientY + 'px';
+    tooltip.classList.add('visible');
+  } else {
+    if (hovered && hovered !== selected) highlight(hovered, false);
+    hovered = null;
+    renderer.domElement.style.cursor = '';
+    tooltip.classList.remove('visible');
+  }
+});
+
+renderer.domElement.addEventListener('pointerdown', e => {
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObjects(clickables, false);
+  if (hits.length > 0) {
+    const obj = hits[0].object;
+    if (selected && selected !== obj) highlight(selected, false);
+    selected = obj;
+    highlight(selected, true);
+    setInfo(obj.userData.structureId);
+    controls.autoRotate = false;
+  } else {
+    if (selected) highlight(selected, false);
+    selected = null;
+    document.getElementById('info-name').textContent = 'Aucune sélection';
+    document.getElementById('info-desc').textContent = 'Cliquez sur une structure dans la scène 3D pour afficher ses informations anatomiques et fonctionnelles.';
+  }
+});
+
+/* ── FOCUS VIA LÉGENDE ── */
+window.focusStructure = function(id) {
+  controls.autoRotate = false;
+  const targets = {
+    cerveau: { pos: new THREE.Vector3(0, 4, 14), look: new THREE.Vector3(0, 9, 0) },
+    moelle:  { pos: new THREE.Vector3(4, 2, 10), look: new THREE.Vector3(0, 2, 0) },
+    median:  { pos: new THREE.Vector3(-5, 0, 10), look: new THREE.Vector3(-1, 0, 0) },
+    ulnaire: { pos: new THREE.Vector3(-5, -1, 10), look: new THREE.Vector3(-1.3, -1, -0.1) },
+    radial:  { pos: new THREE.Vector3(5, 0, 10), look: new THREE.Vector3(1, 0, 0.1) },
+    main:    { pos: new THREE.Vector3(0, -5, 12), look: new THREE.Vector3(0, -5, 0) },
+  };
+  const t = targets[id];
+  if (t) {
+    camera.position.lerp(t.pos, 0.6);
+    controls.target.lerp(t.look, 0.6);
+  }
+  setInfo(id);
+};
+
+/* ── RESIZE ── */
+window.addEventListener('resize', () => {
+  const w = wrap.clientWidth, h = wrap.clientHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+});
+
+/* ── ÉTOILES DE FOND ── */
+const starGeo = new THREE.BufferGeometry();
+const sv = [];
+for (let i = 0; i < 500; i++) sv.push((Math.random()-0.5)*80,(Math.random()-0.5)*80,(Math.random()-0.5)*80);
+starGeo.setAttribute('position', new THREE.Float32BufferAttribute(sv, 3));
+scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x223355, size: 0.1 })));
+
+/* ── BOUCLE D'ANIMATION ── */
+const clock = new THREE.Clock();
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function animate() {
+  requestAnimationFrame(animate);
+  const dt = clock.getDelta();
+  const el = clock.getElapsedTime();
+
+  if (!prefersReduced) {
+    root.rotation.y = Math.sin(el * 0.1) * 0.03;
+    root.position.y = Math.sin(el * 0.2) * 0.03;
+    signals.forEach(s => s.update(dt));
+  }
+
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+animate();
+</script>
+</body>
+</html>
