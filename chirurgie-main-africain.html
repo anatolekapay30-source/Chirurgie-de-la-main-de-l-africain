@@ -3,17 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Chirurgie de la main en Afrique : anatomie, nerfs, scène 3D interactive, pathologies et auto-évaluation. Projet éducatif d'Anatole Kibadi Kapay JR.">
+<meta property="og:title" content="Chirurgie de la Main de l'Africain">
+<meta property="og:description" content="Un voyage interactif du cerveau jusqu'au bout des doigts.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d4a017'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle'%3E%E2%9C%8B%3C/text%3E%3C/svg%3E">
 <title>Chirurgie de la Main de l'Africain — Anatole Kibadi Kapay</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --noir:        #05080f;
-  --bleu-nuit:   #080f1e;
-  --bleu-profond:#0a1628;
-  --bleu-surface:#0e1f38;
-  --cyan:        #00d4c8;
-  --cyan-dim:    #008f8a;
+  --noir:        #0d0806;
+  --bleu-nuit:   #150d09;
+  --bleu-profond:#1d120b;
+  --bleu-surface:#2a1810;
+  --cyan:        #e8863a;
+  --cyan-dim:    #a9531b;
   --electrique:  #3b82f6;
   --or:          #d4a017;
   --or-clair:    #f0c040;
@@ -671,9 +675,41 @@ footer {
 }
 
 :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+/* ── AJOUTS ── */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:1100;background:linear-gradient(90deg,#c1440e,#d4a017,#2f8f5b)}
+.kente{height:10px;background:repeating-linear-gradient(90deg,#c1440e 0 28px,#d4a017 28px 44px,#0d0806 44px 52px,#2f8f5b 52px 76px,#d4a017 76px 84px)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+.patho-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:36px}
+.patho{background:var(--bleu-profond);border:1px solid rgba(212,160,23,.25);border-radius:var(--rayon);padding:22px 24px;transition:transform var(--transition),border-color var(--transition)}
+.patho:hover{transform:translateY(-4px) rotate(-.4deg);border-color:var(--or)}
+.patho h3{font-weight:normal;font-size:20px;color:var(--or-clair);margin-bottom:6px}
+.patho .tag{font-family:-apple-system,'Segoe UI',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.patho p{font-size:14.5px;color:var(--gris-300);margin-top:10px;line-height:1.65}
+.patho b{color:var(--blanc);font-weight:600}
+.quiz{margin-top:36px;background:var(--bleu-surface);border:1px solid rgba(232,134,58,.35);border-radius:var(--rayon);padding:32px}
+.quiz-q{font-size:19px;line-height:1.5;margin:10px 0 20px}
+.quiz-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.quiz button{font:inherit;font-size:15px;color:var(--blanc);background:var(--bleu-profond);border:1px solid var(--verre-bord);border-radius:10px;padding:12px;cursor:pointer;transition:all var(--transition)}
+.quiz button:hover:not(:disabled){border-color:var(--cyan);background:#33200f}
+.quiz button.ok{background:#1f5c3b;border-color:#2f8f5b}
+.quiz button.ko{background:#6b2312;border-color:#c1440e}
+.quiz-fb{min-height:60px;margin-top:18px;color:var(--gris-300);font-size:15px}
+.quiz-next{margin-top:12px;background:var(--or)!important;color:#1a0f05!important;border:0!important;font-weight:bold}
+.quiz-meta{font-family:-apple-system,'Segoe UI',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris-400)}
+.timeline{margin-top:36px;border-left:2px solid var(--or);padding-left:26px;display:grid;gap:22px}
+.timeline div{position:relative}
+.timeline div::before{content:'';position:absolute;left:-34px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px var(--noir)}
+.timeline b{color:var(--or-clair);font-weight:normal;font-size:18px}
+.timeline p{color:var(--gris-300);font-size:15px;margin-top:2px}
+.nav-links a:focus-visible,.quiz button:focus-visible{outline:2px solid var(--or-clair);outline-offset:3px}
+@media(max-width:760px){.nav-links{display:none}.heritage-card{grid-template-columns:1fr}.section{padding:64px 22px}}
 </style>
 </head>
 <body>
+<div id="progress" aria-hidden="true"></div>
+<noscript><p style="padding:90px 20px;text-align:center">Ce site utilise JavaScript pour ses animations et sa scène 3D.</p></noscript>
 
 <!-- BARRE DE NAVIGATION -->
 <nav id="navbar" role="navigation" aria-label="Navigation principale">
@@ -686,7 +722,7 @@ footer {
     <li><a href="#anatomie">Anatomie</a></li>
     <li><a href="#scene3d">Scène 3D</a></li>
     <li><a href="#recepteurs">Récepteurs</a></li>
-  </ul>
+  <li><a href="#pathologies">Cas cliniques</a></li></ul>
 </nav>
 
 <!-- HERO -->
@@ -1033,6 +1069,35 @@ footer {
 </section>
 
 <!-- FOOTER -->
+
+<div class="kente" aria-hidden="true"></div>
+<section id="pathologies"><div class="section">
+  <div class="section-eyebrow">Sur le terrain</div>
+  <h2 class="section-title reveal">Quand la main ne répond plus :<br>les pathologies que l'on rencontre</h2>
+  <div class="section-divider"></div>
+  <p class="section-body reveal">En Afrique comme ailleurs, accidents de la route, chutes, plaies par machettes ou outils, brûlures domestiques et maladies neurologiques font de la main l'un des organes les plus souvent blessés. Voici cinq tableaux cliniques classiques, chacun racontant l'histoire d'un nerf ou d'un tendon en difficulté.</p>
+  <div class="patho-grid">
+    <article class="patho reveal"><span class="tag">Nerf médian</span><h3>Syndrome du canal carpien</h3><p>Le nerf est comprimé sous le ligament annulaire antérieur du carpe. <b>Signes :</b> fourmillements du pouce, de l'index et du majeur, surtout la nuit. <b>Tests :</b> Tinel, Phalen. <b>Traitement :</b> attelle, infiltration, puis libération chirurgicale du canal si besoin.</p></article>
+    <article class="patho reveal"><span class="tag">Nerf radial</span><h3>La main tombante</h3><p>Souvent après une fracture de la diaphyse de l'humérus, où le nerf passe contre l'os. Le poignet et les doigts ne peuvent plus s'étendre. <b>Prise en charge :</b> surveillance, attelle d'extension, exploration chirurgicale ou transferts tendineux en l'absence de récupération.</p></article>
+    <article class="patho reveal"><span class="tag">Nerf ulnaire</span><h3>La main en griffe</h3><p>Les 4<sup>e</sup> et 5<sup>e</sup> doigts se crispent car les muscles intrinsèques sont paralysés. <b>Signes :</b> signe de Froment (le pouce se plie pour tenir une feuille), anesthésie du bord interne de la main. Fréquente après traumatisme du coude ou du poignet, et dans la lèpre.</p></article>
+    <article class="patho reveal"><span class="tag">Fascia palmaire</span><h3>Maladie de Dupuytren</h3><p>Un tissu fibreux s'épaissit dans la paume et attire peu à peu les doigts (surtout annulaire et auriculaire) vers la flexion. Évolution lente. <b>Traitement :</b> aponévrotomie ou fasciectomie quand la gêne devient fonctionnelle.</p></article>
+    <article class="patho reveal"><span class="tag">Tendons et vaisseaux</span><h3>Plaies, sections et replantations</h3><p>Une coupure profonde peut sectionner tendons fléchisseurs, nerfs digitaux et artères. La <b>microchirurgie</b> permet de suturer des structures de moins d'un millimètre, voire de replanter un doigt, suivie d'une rééducation longue et exigeante.</p></article>
+    <article class="patho reveal"><span class="tag">Séquelles</span><h3>Brûlures et rétractions</h3><p>La peau cicatricielle se rétracte et bloque les articulations. Greffes, plasties cutanées, orthèses et rééducation précoce redonnent amplitude et préhension.</p></article>
+  </div>
+
+  <h3 class="section-title reveal" style="font-size:26px;margin-top:80px">Le parcours d'une réparation</h3>
+  <div class="timeline reveal">
+    <div><b>1 · L'urgence</b><p>Contrôler le saignement, protéger la main, conserver un segment amputé au frais (jamais directement sur la glace), évacuer vers un centre équipé.</p></div>
+    <div><b>2 · Le bilan</b><p>Examen de la sensibilité, de la motricité et de la vascularisation, puis radiographies. Chaque nerf se teste par un geste simple.</p></div>
+    <div><b>3 · La réparation</b><p>Os stabilisé, tendons suturés, nerfs réparés sous microscope, vaisseaux rétablis, couverture cutanée.</p></div>
+    <div><b>4 · La rééducation</b><p>Souvent la moitié du résultat : mobilisation guidée, orthèses, rééducation sensitive, retour progressif au travail et aux gestes du quotidien.</p></div>
+  </div>
+
+  <h3 class="section-title reveal" style="font-size:26px;margin-top:80px">À toi de jouer : quel nerf est touché ?</h3>
+  <div class="quiz reveal" id="quiz" aria-live="polite"></div>
+  <p class="section-body" style="font-size:13px;margin-top:28px;color:var(--gris-500)">Contenu éducatif. Il ne remplace ni un avis médical ni une consultation.</p>
+</div></section>
+
 <footer role="contentinfo">
   <div class="footer-title">Anatole Kibadi Kapay JR</div>
   <p class="footer-sub" style="margin-top:4px;">Projet éducatif en neuroanatomie de la main · Dans la continuité du Professeur Anatole Kibadi Kapay</p>
@@ -1148,8 +1213,8 @@ function switchTab(id) {
 <script type="importmap">
 {
   "imports": {
-    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
   }
 }
 </script>
@@ -1613,6 +1678,35 @@ function animate() {
 }
 
 animate();
+</script>
+
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  var Q=[
+   ['Après une fracture de l\'humérus, le patient ne peut plus relever le poignet : « main tombante ».','Radial',['Médian','Radial','Ulnaire'],'Le nerf radial longe la diaphyse humérale et commande les extenseurs du poignet et des doigts.'],
+   ['Fourmillements nocturnes du pouce, de l\'index et du majeur, soulagés en secouant la main.','Médian',['Médian','Radial','Ulnaire'],'Classique du canal carpien : le médian est comprimé au poignet.'],
+   ['Griffe des 4e et 5e doigts, signe de Froment positif.','Ulnaire',['Médian','Radial','Ulnaire'],'Les muscles intrinsèques innervés par l\'ulnaire sont paralysés.'],
+   ['Perte de sensibilité du bord interne de la main et du petit doigt.','Ulnaire',['Médian','Radial','Ulnaire'],'Le territoire sensitif de l\'ulnaire couvre le 5e doigt et la moitié du 4e.'],
+   ['Atrophie de l\'éminence thénar, le pouce n\'arrive plus à s\'opposer.','Médian',['Médian','Radial','Ulnaire'],'L\'opposition du pouce dépend des muscles thénariens, innervés par le médian.']
+  ],i=0,score=0,box=document.getElementById('quiz');
+  function show(){
+    if(i>=Q.length){box.innerHTML='<div class="quiz-meta">Terminé</div><p class="quiz-q">Score : '+score+' / '+Q.length+(score>=4?' · Bravo, futur chirurgien !':' · Relis la section anatomie et réessaie.')+'</p><button class="quiz-next" id="rs">Recommencer</button>';
+      document.getElementById('rs').onclick=function(){i=0;score=0;show()};return}
+    var q=Q[i];box.innerHTML='<div class="quiz-meta">Cas '+(i+1)+' sur '+Q.length+'</div><p class="quiz-q">'+q[0]+'</p><div class="quiz-opts">'+q[2].map(function(o){return '<button>'+o+'</button>'}).join('')+'</div><div class="quiz-fb"></div>';
+    box.querySelectorAll('.quiz-opts button').forEach(function(b){b.onclick=function(){
+      var ok=b.textContent===q[1];if(ok)score++;
+      box.querySelectorAll('.quiz-opts button').forEach(function(x){x.disabled=true;if(x.textContent===q[1])x.classList.add('ok')});
+      if(!ok)b.classList.add('ko');
+      var fb=box.querySelector('.quiz-fb');fb.textContent=(ok?'Exact. ':'Pas tout à fait. ')+q[3];
+      var n=document.createElement('button');n.className='quiz-next';n.textContent=i<Q.length-1?'Cas suivant':'Voir mon score';n.onclick=function(){i++;show()};fb.appendChild(document.createElement('br'));fb.appendChild(n);
+    }});
+  }
+  show();
+})();
 </script>
 </body>
 </html>
